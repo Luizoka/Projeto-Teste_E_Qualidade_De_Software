@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Login</title>
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+
+<body>
+    <main>
+        <div class="form-container">
+            <h1>Login</h1>
+            <form id="login-form">
+                <label for="emailRequest">E-mail:</label>
+                <input type="text" id="emailRequest" name="email" placeholder="email">
+                
+                <label for="passwordRequest">Senha:</label>
+                <div class="password-container">
+                    <input type="password" id="passwordRequest" name="password" placeholder="Senha">
+                    <button type="button" class="toggle-password" id="toggle-password">
+                        <img src="assets/imgs/eye_false.png" alt="Mostrar Senha" id="icon">
+                    </button>
+                </div>
+                
+                <button type="submit">Entrar</button>
+            </form>
+
+            <div class="error-message" id="error-message"></div>
+
+            <div class="register-container">
+                <p>Não tem Login?</p>
+                <a href="assets/html/sign-up.html">Cadastre-se</a>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="assets/js/index.js"></script>
+<script src="assets/js/messages.js"></script>
+<script src="assets/js/passwordVisibility.js"></script>
+
+</html>

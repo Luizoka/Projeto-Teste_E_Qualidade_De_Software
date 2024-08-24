@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap');
+
+:root {
+    --black: #0a0908ff;
+    --gunmetal: #22333bff;
+    --dark-black: #111111; 
+    --light-blue: #007bff;
+    --dark-blue: #0056b3; 
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
+}
+
+body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gunmetal);
+}
+
+.form-container {
+    background-color: var(--dark-black); 
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    width: 400px;
+    min-width: 300px; 
+    text-align: center;
+    margin: 0 1rem ; 
+}
+
+h1 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: var(--white); 
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: var(--white);
+    text-align: left;
+    width: 100%; 
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--light-blue);
+    border-radius: 5px;
+    font-size: 1rem;
+    color: var(--white); 
+    background-color: var(--black); 
+    width: 100%; 
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: var(--light-blue);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2); 
+}
+
+button {
+    padding: 0.8rem;
+    background-color: var(--light-blue); 
+    border: none;
+    border-radius: 5px;
+    color: var(--white);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 0.5rem;
+}
+
+button:hover {
+    background-color: var(--dark-blue); 
+}
+
+.login-container {
+    margin-top: 1rem;
+}
+
+.login-container a {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    background-color: var(--light-blue); 
+    border-radius: 5px;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.login-container a:hover {
+    background-color: var(--dark-blue); 
+}
+
+.error-message {
+    font-size: 1rem;
+    display: none; 
+}

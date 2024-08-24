@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Cadastro</title>
+    <link rel="stylesheet" href="../css/sign-up.css">
+</head>
+
+<body>
+    <main>
+        <div class="form-container">
+            <h1>Cadastro</h1>
+            <form id="register-form">
+                <label for="nameRequest">Nome:</label>
+                <input type="text" name="nome" id="nameRequest" placeholder="nome">
+                <label for="emailRequest">E-mail:</label>
+                <input type="text" id="emailRequest" name="email" placeholder="email">
+                <label for="passwordRequest">Senha:</label>
+                <input type="text" id="passwordRequest" name="password" placeholder="senha">
+                <label for="passwordConfirmationRequest">Confirme sua senha:</label>
+                <input type="text" name="confirmação de senha" id="passwordConfirmationRequest" placeholder="senha">
+                <button type="submit">Cadastrar</button>
+            </form>
+
+            <div class="error-message" id="error-message"></div>
+            <div class="login-container">
+                <a href="../../index.html">Pagina inicial</a>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="../js/sign-up.js"></script>
+<script src="../js/messages.js"></script>
+
+</html>

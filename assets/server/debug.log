@@ -1,0 +1,120 @@
+Email recebido: admin@admin.com
+Senha recebida: hashedPassword123
+Resultado da consulta:
+Array
+(
+    [ID] => 1
+    [Name] => admin
+    [Email] => admin@admin.com
+    [Password] => hashedPassword123
+    [Salt] => randomSalt123
+)
+
+Email recebido: admin@admin.com
+Senha recebida: hashedPassword123
+Resultado da consulta:
+Array
+(
+    [ID] => 1
+    [Name] => admin
+    [Email] => admin@admin.com
+    [Password] => hashedPassword123
+    [Salt] => randomSalt123
+)
+
+Email recebido: luiz@gmail.com
+Senha recebida: 123456789A
+Resultado da consulta:
+Array
+(
+    [ID] => 2
+    [Name] => luizoka soca
+    [Email] => luiz@gmail.com
+    [Password] => 123456789A
+    [Salt] => 
+)
+
+Email recebido: admin@admin.com
+Senha recebida: hashedPassword123
+Resultado da consulta:
+Array
+(
+    [ID] => 1
+    [Name] => admin
+    [Email] => admin@admin.com
+    [Password] => hashedPassword123
+    [Salt] => randomSalt123
+)
+
+Email recebido: ararararetwtwwe#hashedPassword12@gmail.com
+Senha recebida: 89178902589045785728950A
+Resultado da consulta:
+
+Email recebido: zac2003ligi2015luiz@gmail.com
+Senha recebida: 123456789A
+Resultado da consulta:
+Array
+(
+    [ID] => 3
+    [Name] => luizoka
+    [Email] => zac2003ligi2015luiz@gmail.com
+    [Password] => 123456789A
+    [Salt] => 
+)
+
+Email recebido: efaew
+Senha recebida: asfasfasf
+Resultado da consulta:
+
+Email recebido: 
+Senha recebida: 
+Resultado da consulta:
+
+Email recebido: 
+Senha recebida: 
+Resultado da consulta:
+
+Email recebido: 
+Senha recebida: 
+Resultado da consulta:
+
+Email recebido: jsvkjdns
+Senha recebida: akjdsfkjle
+Resultado da consulta:
+
+Email recebido: admin@admin.com
+Senha recebida: 123456789A
+Resultado da consulta:
+Array
+(
+    [ID] => 1
+    [Name] => admin
+    [Email] => admin@admin.com
+    [Password] => hashedPassword123
+    [Salt] => randomSalt123
+)
+
+Email recebido: zac2003ligi2015luiz@gmail.com
+Senha recebida: 123456789A
+Resultado da consulta:
+Array
+(
+    [ID] => 3
+    [Name] => luizoka
+    [Email] => zac2003ligi2015luiz@gmail.com
+    [Password] => 123456789A
+    [Salt] => 
+)
+
+Email recebido: teste@gmail.com
+Senha recebida: 12121212A
+Resultado da consulta:
+Array
+(
+    [ID] => 4
+    [Name] => luiz
+    [Email] => teste@gmail.com
+    [Password] => 12121212A
+    [Salt] => 
+)
+

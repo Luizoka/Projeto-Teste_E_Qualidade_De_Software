@@ -1,0 +1,7 @@
+CREATE TABLE tarefas (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    data DATE NOT NULL,
+    descricao TEXT NOT NULL,
+    concluido BOOLEAN NOT NULL
+);
