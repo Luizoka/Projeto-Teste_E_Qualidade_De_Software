@@ -66,6 +66,6 @@ Este projeto foi desenvolvido como parte da disciplina de Teste e Qualidade de S
 
 ## Contribuidores
 
-- Nome do Aluno: [Seu Nome]
+- Nome do Aluno: Luiz Gabriel Pinto Lopes Rabelo
 - Disciplina: Teste e Qualidade de Software
-- Instituição: [Nome da Instituição]
+- Instituição: Universidade Federal do Oeste do Pará (UFOPA)
