@@ -1,12 +1,20 @@
 <?php
 header('Content-Type: application/json');
-
-include 'db_connect.php';
+require 'db_connect.php';
 
 $userId = $_GET['userId'] ?? null;
+$filtro = $_GET['filtro'] ?? 'todos';
 
 if ($userId) {
-    $stmt = $pdo->prepare('SELECT * FROM lista WHERE UsuarioID = :userId');
+    $sql = 'SELECT * FROM lista WHERE UsuarioID = :userId';
+
+    if ($filtro === 'hoje') {
+        $sql .= ' AND Date = CURDATE()';
+    } elseif ($filtro === 'concluido') {
+        $sql .= ' AND IsFinished = 1';
+    }
+
+    $stmt = $pdo->prepare($sql);
     $stmt->execute(['userId' => $userId]);
     $tarefas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

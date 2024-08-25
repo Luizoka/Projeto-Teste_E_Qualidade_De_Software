@@ -15,7 +15,7 @@ function carregarTarefas() {
             if (tarefas.error) {
                 console.error(tarefas.error);
             } else {
-                atualizarListaDeTarefas(tarefas);
+                atualizarListaDeTarefas(tarefas); // Mantém essa chamada
             }
         })
         .catch(error => {
@@ -23,15 +23,20 @@ function carregarTarefas() {
         });
 }
 
+
 function exibirTarefa(tarefa) {
     const novaTarefa = document.createElement('div');
     novaTarefa.classList.add('tarefa');
     novaTarefa.innerHTML = `
+    <div class="tarefa-header">
         <h3>${tarefa.Title}</h3>
-        <p>${tarefa.Date}</p>
-        <p>${tarefa.Description}</p>
-        <input type="checkbox" ${tarefa.IsFinished ? 'checked' : ''} onchange="marcarConcluida(this, '${tarefa.Title}')">
-    `;
+        <button onclick="prepararEdicao(${tarefa.ID}, '${tarefa.Title}', '${tarefa.Date}', '${tarefa.Description}', ${tarefa.IsFinished})">Editar</button>
+    </div>
+
+    <p>${tarefa.Date}</p>
+    <p>${tarefa.Description}</p>
+    <input type="checkbox" ${tarefa.IsFinished ? 'checked' : ''} onchange="marcarConcluida(this, '${tarefa.Title}')">
+`;
     document.getElementById('tarefas').appendChild(novaTarefa);
 }
 

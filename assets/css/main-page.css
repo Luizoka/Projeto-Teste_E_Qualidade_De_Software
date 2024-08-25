@@ -22,16 +22,51 @@ body {
     color: var(--white);
 }
 
+/* Estilo para a navegação */
+.navegacao {
+    margin: 20px;
+    padding: 10px;
+    justify-content: center;
+}
+
 .navegacao nav {
     display: flex;
     justify-content: center;
-    gap: 30%;
-    margin-bottom: 20px;
+    gap: 25%; /* Ajuste o espaço entre os botões */
 }
 
 .navegacao a {
     text-decoration: none;
     color: var(--light-blue); 
+}
+
+/* Estilo para os botões de navegação */
+.navegacao button {
+    background-color: var(--light-blue); /* Cor de fundo dos botões */
+    color: var(--white); /* Cor do texto dos botões */
+    border: none; /* Remove borda padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 14px; /* Tamanho da fonte */
+    cursor: pointer; /* Cursor pointer para indicar que é clicável */
+    transition: background-color 0.3s, transform 0.5s; /* Transição suave para mudanças */
+    width: 110px; /* Largura fixa dos botões */
+    height: 35px; /* Altura fixa dos botões */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Efeito de hover para os botões */
+.navegacao button:hover {
+    background-color: var(--dark-blue); /* Cor de fundo ao passar o mouse */
+    transform: scale(1.05); /* Leve aumento no botão */
+}
+
+/* Efeito de foco para os botões */
+.navegacao button:focus {
+    outline: none; /* Remove o contorno padrão do foco */
+    box-shadow: 0 0 0 2px var(--light-blue); /* Adiciona uma sombra de foco */
 }
 
 .tarefas {
@@ -43,6 +78,32 @@ body {
     padding-bottom: 100px; 
     box-sizing: border-box;
     border-radius: 8px; 
+}
+
+.tarefa-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinha verticalmente os itens no centro */
+}
+
+.tarefa-header h3 {
+    margin: 0; /* Remove a margem padrão do h3 */
+}
+
+.tarefa-header button {
+    background-color: var(--light-blue); /* Cor de fundo dos botões */
+    color: var(--white); /* Cor do texto dos botões */
+    border: none; /* Remove borda padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 5px 10px; /* Ajuste o espaçamento interno do botão */
+    font-size: 14px; /* Tamanho da fonte do botão */
+    cursor: pointer; /* Cursor pointer para indicar que é clicável */
+    transition: background-color 0.3s, transform 0.2s; /* Transição suave para mudanças */
+}
+
+.tarefa-header button:hover {
+    background-color: var(--dark-blue); /* Cor de fundo ao passar o mouse */
+    transform: scale(1.05); /* Leve aumento no botão */
 }
 
 .tarefas > div {
@@ -125,4 +186,65 @@ body {
 
 .grupo-formulario button:hover {
     background-color: var(--dark-blue); 
+}
+
+/* Estilo para o modal */
+.modal {
+    display: none; /* Inicialmente escondido */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.446); /* Fundo semi-transparente */
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+}
+
+/* Estilo para o conteúdo do modal */
+.modal-conteudo {
+    background-color: var(--dark-black);
+    border: 1px solid var(--light-blue);
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--white);
+    width: 80%;
+    max-width: 600px; /* Largura máxima */
+    box-sizing: border-box;
+    position: relative; /* Para posicionar o botão de fechar corretamente */
+}
+
+/* Botão de fechar o modal */
+.modal-close {
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Estilo para inputs e textarea dentro do modal */
+.modal-conteudo input[type="text"],
+.modal-conteudo input[type="date"],
+.modal-conteudo textarea {
+    width: calc(100% - 20px); /* Ajusta a largura com base no padding do conteúdo */
+    padding: 10px;
+    background-color: var(--softer-black);
+    color: var(--white);
+    border: 1px solid var(--light-blue);
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-bottom: 10px; /* Espaçamento inferior */
+}
+
+/* Estilo específico para o textarea */
+.modal-conteudo textarea {
+    min-height: 100px; /* Define a altura mínima */
+    max-height: 200px; /* Define a altura máxima */
+    resize: vertical; /* Permite o redimensionamento vertical */
 }
