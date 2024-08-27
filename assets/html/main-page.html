@@ -11,7 +11,7 @@
 <body>
     <main>
         <div class="titulo">
-            <h1>ToDo Luiz</h1>
+            <h1>ToDo de Luiz</h1>
         </div>
         <div class="navegacao">
             <nav>
@@ -20,6 +20,7 @@
                 <button id="concluido">Concluído</button>
             </nav>
         </div>
+
         <!-- Modal para editar tarefa -->
         <div id="modal-editar-tarefa" class="modal">
             <div class="modal-conteudo">
@@ -40,8 +41,18 @@
             </div>
         </div>
 
+        <!-- Modal para confirmação de exclusão -->
+        <div id="modal-excluir-tarefa" class="modal">
+            <div class="modal-content">
+                <h2>Confirmar Exclusão</h2>
+                <p>Tem certeza que deseja excluir esta tarefa?</p>
+                <button id="confirmar-exclusao">Excluir</button>
+                <button id="cancelar-exclusao">Cancelar</button>
+            </div>
+        </div>
 
         <div class="tarefas" id="tarefas"></div>
+
         <div class="incluir-tarefa">
             <div class="grupo-formulario">
                 <label for="titulo">Título</label>

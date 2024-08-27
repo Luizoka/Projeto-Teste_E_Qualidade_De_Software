@@ -55,7 +55,6 @@ function adicionarTarefa(tarefa) {
     })
     .then(response => response.json())
     .then(result => {
-        console.log('Tarefa adicionada:', result);
         if (result.success) {
             carregarTarefas(); // Chama a função para atualizar a lista de tarefas
         }
@@ -81,7 +80,6 @@ function atualizarTarefa(tarefa) {
     })
     .then(response => response.json())
     .then(result => {
-        console.log('Tarefa atualizada:', result);
         if (result.success) {
             carregarTarefas(); // Atualiza a lista de tarefas
         } else {

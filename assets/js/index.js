@@ -28,8 +28,7 @@ function catchText() {
         if (data.status === 'success') {
             // Armazena o userId no localStorage
             localStorage.setItem('userId', data.userId);
-            console.log(data.userId);
-
+            //console.log(data.userId);
             displaySuccessMessage("Bem vindo!");
             setTimeout(function () {
                 window.location.href = "assets/html/main-page.html";
