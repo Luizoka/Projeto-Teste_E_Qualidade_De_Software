@@ -40,7 +40,7 @@ function validateForm(email, password, confirmpassword) {
 }
 
 function saveUser(name, email, password, passwordConfirm) {
-    fetch('http://localhost/Teste_Qualidade_Software/assets/server/register.php', {
+    fetch('http://localhost/Projeto-Teste_E_Qualidade_De_Software/assets/server/register.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'

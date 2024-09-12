@@ -40,7 +40,7 @@ function obterDataDeHoje() {
 }
 
 function adicionarTarefa(tarefa) {
-    fetch('http://localhost/Teste_Qualidade_Software/assets/server/salvar-tarefas.php', {
+    fetch('http://localhost/Projeto-Teste_E_Qualidade_De_Software/assets/server/salvar-tarefas.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -65,7 +65,7 @@ function adicionarTarefa(tarefa) {
 }
 
 function atualizarTarefa(tarefa) {
-    fetch('http://localhost/Teste_Qualidade_Software/assets/server/update-task.php', {
+    fetch('http://localhost/Projeto-Teste_E_Qualidade_De_Software/assets/server/update-task.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'

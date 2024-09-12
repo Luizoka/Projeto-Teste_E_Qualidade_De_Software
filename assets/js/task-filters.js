@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function carregarTarefasFiltradas(filtro) {
-        fetch(`http://localhost/Teste_Qualidade_Software/assets/server/carregar-tarefas.php?userId=${userId}&filtro=${filtro}`)
+        fetch(`http://localhost/Projeto-Teste_E_Qualidade_De_Software/assets/server/carregar-tarefas.php?userId=${userId}&filtro=${filtro}`)
             .then(response => {
                 //console.log('Resposta recebida:', response);
                 if (!response.ok) {

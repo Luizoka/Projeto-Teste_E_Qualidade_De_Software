@@ -8,7 +8,7 @@ function catchText() {
     var userPassword = document.getElementById("passwordRequest").value;
 
     // Envia as credenciais de login para o PHP
-    fetch('http://localhost/Teste_Qualidade_Software/assets/server/login.php', {
+    fetch('http://localhost/Projeto-Teste_E_Qualidade_De_Software/assets/server/login.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'

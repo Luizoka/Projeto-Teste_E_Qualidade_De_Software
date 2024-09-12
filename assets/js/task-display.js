@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (userId) {
         // Faça uma requisição para obter o nome do usuário
-        fetch(`http://localhost/Teste_Qualidade_Software/assets/server/get-username.php?userId=${userId}`)
+        fetch(`http://localhost/Projeto-Teste_E_Qualidade_De_Software/assets/server/get-username.php?userId=${userId}`)
             .then(response => {
                 return response.text().then(text => {
                     //console.log('Resposta recebida:', text); // Loga a resposta completa antes de tentar convertê-la
@@ -37,7 +37,7 @@ function carregarTarefas() {
         return;
     }
 
-    fetch(`http://localhost/Teste_Qualidade_Software/assets/server/carregar-tarefas.php?userId=${userId}`)
+    fetch(`http://localhost/Projeto-Teste_E_Qualidade_De_Software/assets/server/carregar-tarefas.php?userId=${userId}`)
         .then(response => response.json())
         .then(tarefas => {
             if (tarefas.error) {
@@ -93,7 +93,7 @@ function exibirTarefasConcluidas() {
 
 function marcarConcluida(checkbox, taskId) {
     const isFinished = checkbox.checked ? 1 : 0;
-    fetch('http://localhost/Teste_Qualidade_Software/assets/server/update-status.php', {
+    fetch('http://localhost/Projeto-Teste_E_Qualidade_De_Software/assets/server/update-status.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -127,7 +127,7 @@ function excluirTarefa(tarefaID) {
 
     // Quando o usuário clicar em "Excluir"
     confirmarBtn.onclick = function() {
-        fetch('http://localhost/Teste_Qualidade_Software/assets/server/delete-task.php', {
+        fetch('http://localhost/Projeto-Teste_E_Qualidade_De_Software/assets/server/delete-task.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
