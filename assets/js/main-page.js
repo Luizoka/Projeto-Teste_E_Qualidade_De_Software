@@ -1,10 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     let path = window.location.pathname;
 
-    const link = document.getElementById('theme-style');
-    const theme = localStorage.getItem('theme') || 'tema-claro.css';
-    link.href = getCSSPath(theme);
-
     if (path.includes('hoje.html')) {
         exibirTarefasDeHoje();
     } else if (path.includes('concluido.html')) {
@@ -136,19 +132,6 @@ function marcarConcluida(checkbox, titulo) {
             console.error('Erro ao atualizar o status da tarefa:', error);
         });
     }
-}
-
-function toggleCSS() {
-    const link = document.getElementById('theme-style');
-    const currentStyle = link.getAttribute('href');
-    const newStyle = currentStyle.endsWith('tema-claro.css') ? 'tema-escuro.css' : 'tema-claro.css';
-    link.href = getCSSPath(newStyle);
-    localStorage.setItem('theme', newStyle);
-}
-
-function getCSSPath(cssFile) {
-    const currentPath = window.location.pathname;
-    return currentPath.includes('/assets/html/') ? `../css/tema/${cssFile}` : `assets/css/tema/${cssFile}`;
 }
 
 function limparCampos() {

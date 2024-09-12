@@ -92,8 +92,8 @@ function marcarConcluida(checkbox, taskId) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            ID: taskId,
-            IsFinished: isFinished
+            id: taskId, 
+            isfinished: isFinished
         })
     })
     .then(response => response.json())
