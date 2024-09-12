@@ -1,22 +1,19 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Obtenha o userId do localStorage
     const userId = localStorage.getItem('userId');
 
     if (userId) {
-        // Faça uma requisição para obter o nome do usuário
         fetch(`http://localhost/Projeto-Teste_E_Qualidade_De_Software/assets/server/get-username.php?userId=${userId}`)
-            .then(response => {
-                return response.text().then(text => {
-                    //console.log('Resposta recebida:', text); // Loga a resposta completa antes de tentar convertê-la
-                    return JSON.parse(text);
-                });
-            })
-            .then(data => {
-                if (data.success) {
-                    // Atualize o título da página com o nome do usuário
-                    document.querySelector('.titulo h1').textContent = `ToDo de ${data.userName}`;
-                } else {
-                    console.error('Erro ao obter o nome do usuário:', data.message);
+            .then(response => response.text())
+            .then(text => {
+                try {
+                    const data = JSON.parse(text);
+                    if (data.success) {
+                        document.querySelector('.titulo h1').textContent = `ToDo de ${data.userName}`;
+                    } else {
+                        console.error('Erro ao obter o nome do usuário:', data.message);
+                    }
+                } catch (error) {
+                    console.error('Erro ao processar a resposta JSON:', error);
                 }
             })
             .catch(error => {
@@ -28,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     carregarTarefas();
 });
-
 
 function carregarTarefas() {
     const userId = localStorage.getItem('userId');
@@ -43,7 +39,7 @@ function carregarTarefas() {
             if (tarefas.error) {
                 console.error(tarefas.error);
             } else {
-                atualizarListaDeTarefas(tarefas); // Mantém essa chamada
+                atualizarListaDeTarefas(tarefas);
             }
         })
         .catch(error => {
@@ -51,26 +47,23 @@ function carregarTarefas() {
         });
 }
 
-
 function exibirTarefa(tarefa) {
     const novaTarefa = document.createElement('div');
     novaTarefa.classList.add('tarefa');
     novaTarefa.innerHTML = `
         <div class="tarefa-header">
-            <h3>${tarefa.Title}</h3>
+            <h3>${tarefa.title}</h3>
             <div>
-            <button onclick="excluirTarefa(${tarefa.ID})"><img src="../imgs/trash.png" alt="lixeiro" class="tarefa__imgs"></button>
-            <button onclick="prepararEdicao(${tarefa.ID}, '${tarefa.Title}', '${tarefa.Date}', '${tarefa.Description}', ${tarefa.IsFinished})"> <img src="../imgs/pencil.png" alt="imagem caneta, função editar tarefa" class="tarefa__imgs"></button>
-        </div>
+                <button onclick="excluirTarefa(${tarefa.id})"><img src="../imgs/trash.png" alt="Excluir" class="tarefa__imgs"></button>
+                <button onclick="prepararEdicao(${tarefa.id}, '${tarefa.title}', '${tarefa.date}', '${tarefa.description}', ${tarefa.isfinished})"><img src="../imgs/pencil.png" alt="Editar" class="tarefa__imgs"></button>
             </div>
-        <p>${tarefa.Date}</p>
-        <p>${tarefa.Description}</p>
-<input type="checkbox" ${tarefa.IsFinished ? 'checked' : ''} onchange="marcarConcluida(this, ${tarefa.ID}); carregarTarefas();">
-
+        </div>
+        <p>${tarefa.date}</p>
+        <p>${tarefa.description}</p>
+        <input type="checkbox" ${tarefa.isfinished ? 'checked' : ''} onchange="marcarConcluida(this, ${tarefa.id});">
     `;
     document.getElementById('tarefas').appendChild(novaTarefa);
 }
-
 
 function atualizarListaDeTarefas(tarefas) {
     const tarefasContainer = document.getElementById('tarefas');
@@ -103,18 +96,17 @@ function marcarConcluida(checkbox, taskId) {
             IsFinished: isFinished
         })
     })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Atualiza as tarefas na tela após a mudança de status
-                carregarTarefas();
-            } else {
-                console.error(`Erro ao atualizar o status da tarefa ${taskId}: ${data.message}`);
-            }
-        })
-        .catch(error => {
-            console.error('Erro na requisição:', error);
-        });
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            carregarTarefas();
+        } else {
+            console.error(`Erro ao atualizar o status da tarefa ${taskId}: ${data.message}`);
+        }
+    })
+    .catch(error => {
+        console.error('Erro na requisição:', error);
+    });
 }
 
 function excluirTarefa(tarefaID) {
@@ -122,10 +114,8 @@ function excluirTarefa(tarefaID) {
     const confirmarBtn = document.getElementById('confirmar-exclusao');
     const cancelarBtn = document.getElementById('cancelar-exclusao');
 
-    // Exibe o modal
     modal.style.display = 'flex';
 
-    // Quando o usuário clicar em "Excluir"
     confirmarBtn.onclick = function() {
         fetch('http://localhost/Projeto-Teste_E_Qualidade_De_Software/assets/server/delete-task.php', {
             method: 'POST',
@@ -139,7 +129,7 @@ function excluirTarefa(tarefaID) {
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
-                carregarTarefas(); // Atualiza a lista de tarefas
+                carregarTarefas();
             } else {
                 console.error(`Erro ao excluir a tarefa ${tarefaID}: ${data.message}`);
             }
@@ -148,17 +138,15 @@ function excluirTarefa(tarefaID) {
             console.error('Erro na requisição:', error);
         })
         .finally(() => {
-            modal.style.display = 'none'; // Fecha o modal
+            modal.style.display = 'none';
         });
     };
 
-    // Quando o usuário clicar em "Cancelar"
     cancelarBtn.onclick = function() {
-        modal.style.display = 'none'; // Fecha o modal
+        modal.style.display = 'none';
     };
 }
 
-// Fechar o modal se o usuário clicar fora do conteúdo
 window.onclick = function(event) {
     const modal = document.getElementById('modal-excluir-tarefa');
     if (event.target === modal) {

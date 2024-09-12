@@ -4,7 +4,7 @@ header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
 $host = 'localhost';
-$dbname = 'test';
+$dbname = 'databasetodo';
 $username = 'root';
 $password = '';
 

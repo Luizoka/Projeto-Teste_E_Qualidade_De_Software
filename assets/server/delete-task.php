@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $data['id'];
 
     try {
-        $sql = "DELETE FROM lista WHERE id = :id";
+        $sql = "DELETE FROM list WHERE id = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();

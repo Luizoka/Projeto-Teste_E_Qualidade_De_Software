@@ -6,11 +6,11 @@ include 'db_connect.php';
 // Recebe o input JSON e decodifica para um array associativo
 $data = json_decode(file_get_contents('php://input'), true);
 
-$tarefaId = $data['ID'] ?? null;
-$concluido = $data['IsFinished'] ?? null;
+$tarefaId = $data['id'] ?? null; // Alterado de 'ID' para 'id'
+$concluido = $data['isfinished'] ?? null; // Alterado de 'IsFinished' para 'isfinished'
 
 if ($tarefaId !== null && $concluido !== null) {
-    $stmt = $pdo->prepare('UPDATE lista SET IsFinished = :concluido WHERE ID = :tarefaId');
+    $stmt = $pdo->prepare('UPDATE list SET isfinished = :concluido WHERE id = :tarefaId');
     $stmt->execute([
         'tarefaId' => $tarefaId,
         'concluido' => $concluido

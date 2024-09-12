@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $passwordConfirm = $_POST['passwordConfirm'];
+    $passwordConfirm = $_POST['passwordConfirm']; // Receber o passwordConfirm
 
     // Valida os dados
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -14,13 +14,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    if ($password !== $passwordConfirm) {
-        echo json_encode(['status' => 'error', 'message' => 'A senha está incorreta']);
+    if ($password !== $passwordConfirm) { // Comparação de senhas
+        echo json_encode(['status' => 'error', 'message' => 'As senhas não coincidem.']);
         exit();
     }
 
     // Verifica se o email já está registrado
-    $stmt = $pdo->prepare('SELECT * FROM Usuario WHERE Email = :email');
+    $stmt = $pdo->prepare('SELECT * FROM user WHERE email = :email');
     $stmt->execute(['email' => $email]);
     if ($stmt->fetch(PDO::FETCH_ASSOC)) {
         echo json_encode(['status' => 'error', 'message' => 'Este e-mail já está cadastrado.']);
@@ -28,12 +28,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Insere o novo usuário no banco de dados
-    $stmt = $pdo->prepare('INSERT INTO Usuario (Name, Email, Password) VALUES (:name, :email, :password)');
+    $stmt = $pdo->prepare('INSERT INTO user (name, email, password) VALUES (:name, :email, :password)');
     $stmt->execute([
         'name' => $name,
         'email' => $email,
-        'password' => $password // Em produção, usar password_hash($password, PASSWORD_DEFAULT)
+        'password' => $password // Senha sem hash
     ]);
 
     echo json_encode(['status' => 'success', 'message' => 'Seu registro foi concluído.']);
 }
+?>

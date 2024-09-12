@@ -57,10 +57,12 @@ function adicionarTarefa(tarefa) {
     .then(result => {
         if (result.success) {
             carregarTarefas(); // Chama a função para atualizar a lista de tarefas
+        } else {
+            console.error('Falha ao adicionar tarefa:', result);
         }
     })
     .catch(error => {
-        console.error('Erro:', error);
+        console.error('Erro ao adicionar tarefa:', error);
     });
 }
 

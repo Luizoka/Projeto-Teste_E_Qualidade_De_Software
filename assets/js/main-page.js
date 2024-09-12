@@ -109,12 +109,33 @@ function exibirTarefasConcluidas() {
 
 function marcarConcluida(checkbox, titulo) {
     const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
-    tarefas.forEach(tarefa => {
-        if (tarefa.titulo === titulo) {
-            tarefa.concluido = checkbox.checked;
-        }
-    });
-    localStorage.setItem('tarefas', JSON.stringify(tarefas));
+    const tarefaAtualizada = tarefas.find(tarefa => tarefa.titulo === titulo);
+    
+    if (tarefaAtualizada) {
+        tarefaAtualizada.concluido = checkbox.checked;
+        localStorage.setItem('tarefas', JSON.stringify(tarefas));
+
+        // Atualiza o status da tarefa no servidor
+        fetch('update-task.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+                tarefaId: tarefaAtualizada.id,
+                concluido: tarefaAtualizada.concluido ? 1 : 0
+            })
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (!result.success) {
+                console.error('Falha ao atualizar o status da tarefa:', result.message);
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao atualizar o status da tarefa:', error);
+        });
+    }
 }
 
 function toggleCSS() {

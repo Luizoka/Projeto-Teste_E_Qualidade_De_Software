@@ -7,7 +7,8 @@ try {
     if (isset($_GET['userId'])) {
         $userId = $_GET['userId'];
 
-        $stmt = $pdo->prepare("SELECT name FROM usuario WHERE id = :id");
+        // Alterado de 'usuario' para 'user' e 'id' para 'id'
+        $stmt = $pdo->prepare("SELECT name FROM user WHERE id = :id");
         $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
 
         if ($stmt->execute()) {

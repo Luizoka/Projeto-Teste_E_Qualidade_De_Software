@@ -14,7 +14,8 @@ if (!$titulo || !$data || !$descricao || !$usuarioId) {
     exit;
 }
 
-$sql = "INSERT INTO lista (Title, Description, Date, IsFinished, UsuarioID) VALUES (?, ?, ?, ?, ?)";
+// Alterado de 'lista' para 'list', e os nomes dos campos para corresponder ao banco de dados
+$sql = "INSERT INTO list (title, description, date, isfinished, userid) VALUES (?, ?, ?, ?, ?)";
 $stmt = $pdo->prepare($sql);
 
 if ($stmt->execute([$titulo, $descricao, $data, $concluido, $usuarioId])) {

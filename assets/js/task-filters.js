@@ -7,32 +7,27 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     document.getElementById('hoje').addEventListener('click', function () {
-        //console.log('Filtro "hoje" acionado');
         carregarTarefasFiltradas('hoje');
     });
 
     document.getElementById('todos').addEventListener('click', function () {
-        //console.log('Filtro "todos" acionado');
         carregarTarefasFiltradas('todos');
     });
 
     document.getElementById('concluido').addEventListener('click', function () {
-        //console.log('Filtro "concluido" acionado');
         carregarTarefasFiltradas('concluido');
     });
 
     function carregarTarefasFiltradas(filtro) {
         fetch(`http://localhost/Projeto-Teste_E_Qualidade_De_Software/assets/server/carregar-tarefas.php?userId=${userId}&filtro=${filtro}`)
             .then(response => {
-                //console.log('Resposta recebida:', response);
                 if (!response.ok) {
                     throw new Error('Erro na resposta da rede');
                 }
                 return response.json();
             })
             .then(tarefas => {
-                //console.log('Tarefas carregadas:', tarefas);
-                atualizarListaDeTarefas(tarefas); // Aqui chama a função existente no task-display.js
+                atualizarListaDeTarefas(tarefas); // Certifique-se de que a função está acessível
             })
             .catch(error => {
                 console.error('Erro ao carregar tarefas:', error);

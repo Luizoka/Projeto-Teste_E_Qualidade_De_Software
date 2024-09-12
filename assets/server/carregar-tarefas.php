@@ -6,12 +6,12 @@ $userId = $_GET['userId'] ?? null;
 $filtro = $_GET['filtro'] ?? 'todos';
 
 if ($userId) {
-    $sql = 'SELECT * FROM lista WHERE UsuarioID = :userId';
+    $sql = 'SELECT * FROM list WHERE userid = :userId';
 
     if ($filtro === 'hoje') {
-        $sql .= ' AND Date = CURDATE()';
+        $sql .= ' AND date = CURDATE()';
     } elseif ($filtro === 'concluido') {
-        $sql .= ' AND IsFinished = 1';
+        $sql .= ' AND isfinished = 1';
     }
 
     $stmt = $pdo->prepare($sql);

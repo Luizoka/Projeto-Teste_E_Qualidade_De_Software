@@ -4,22 +4,22 @@ document.getElementById('register-form').addEventListener('submit', function (ev
 });
 
 function catchText() {
-    var name = document.getElementById('nameRequest').value;
-    var email = document.getElementById('emailRequest').value;
-    var password = document.getElementById('passwordRequest').value;
-    var passwordConfirm = document.getElementById('passwordConfirmationRequest').value;
+    const name = document.getElementById('nameRequest').value;
+    const email = document.getElementById('emailRequest').value;
+    const password = document.getElementById('passwordRequest').value;
+    const passwordConfirm = document.getElementById('passwordConfirmationRequest').value;
 
     clearErrorMessage();
 
     if (validateForm(email, password, passwordConfirm)) {
-        saveUser(name, email, password, passwordConfirm);
+        saveUser(name, email, password, passwordConfirm); // Enviar passwordConfirm
     }
 }
 
-function validateForm(email, password, confirmpassword) {
-    var isEmailValid = validateEmail(email);
-    var isPasswordValid = validatePassword(password);
-    var isPasswordConfirmValid = validatePasswordConfirm(password, confirmpassword);
+function validateForm(email, password, passwordConfirm) {
+    const isEmailValid = validateEmail(email);
+    const isPasswordValid = validatePassword(password);
+    const isPasswordConfirmValid = validatePasswordConfirm(password, passwordConfirm);
 
     if (!isEmailValid) {
         displayErrorMessage("Seu email está incorreto");
@@ -27,7 +27,7 @@ function validateForm(email, password, confirmpassword) {
     }
 
     if (!isPasswordValid) {
-        displayErrorMessage("Sua senha está incorreta. A senha deve ter pelo menos 8 caracteres e incluir pelo menos uma letra maiúscula.");
+        displayErrorMessage("Sua senha deve ter pelo menos 8 caracteres e incluir pelo menos uma letra maiúscula.");
         return false;
     }
 
@@ -39,7 +39,7 @@ function validateForm(email, password, confirmpassword) {
     return true;
 }
 
-function saveUser(name, email, password, passwordConfirm) {
+function saveUser(name, email, password, passwordConfirm) { // Adicionar passwordConfirm
     fetch('http://localhost/Projeto-Teste_E_Qualidade_De_Software/assets/server/register.php', {
         method: 'POST',
         headers: {
@@ -49,7 +49,7 @@ function saveUser(name, email, password, passwordConfirm) {
             'name': name,
             'email': email,
             'password': password,
-            'passwordConfirm': passwordConfirm
+            'passwordConfirm': passwordConfirm // Enviar passwordConfirm para o PHP
         })
     })
     .then(response => response.json())
@@ -58,7 +58,7 @@ function saveUser(name, email, password, passwordConfirm) {
             displaySuccessMessage("Registro concluído com sucesso!");
             document.getElementById('register-form').reset();
         } else {
-            displayErrorMessage("Não foi possivel realizar o cadastro")
+            displayErrorMessage(data.message || "Não foi possível realizar o cadastro");
         }
     })
     .catch(error => {
@@ -68,12 +68,12 @@ function saveUser(name, email, password, passwordConfirm) {
 }
 
 function validateEmail(email) {
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
 
 function validatePassword(password) {
-    var passwordRegex = /^(?=.*[A-Z]).{8,}$/;
+    const passwordRegex = /^(?=.*[A-Z]).{8,}$/;
     return passwordRegex.test(password);
 }
 

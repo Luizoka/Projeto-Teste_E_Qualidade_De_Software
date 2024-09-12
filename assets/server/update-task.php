@@ -11,7 +11,7 @@ $concluido = $_POST['concluido'] ?? null;
 
 // Atualização geral da tarefa (título, data, descrição e status)
 if ($tarefaId && $titulo && $data && $descricao !== null) {
-    $stmt = $pdo->prepare('UPDATE lista SET Title = :titulo, Date = :data, Description = :descricao, IsFinished = :concluido WHERE id = :tarefaId');
+    $stmt = $pdo->prepare('UPDATE list SET title = :titulo, date = :data, description = :descricao, isfinished = :concluido WHERE id = :tarefaId');
     $stmt->execute([
         'tarefaId' => $tarefaId,
         'titulo' => $titulo,
@@ -25,7 +25,7 @@ if ($tarefaId && $titulo && $data && $descricao !== null) {
 
 // Atualização apenas do status da tarefa
 elseif ($tarefaId !== null && $concluido !== null) {
-    $stmt = $pdo->prepare('UPDATE lista SET IsFinished = :concluido WHERE id = :tarefaId');
+    $stmt = $pdo->prepare('UPDATE list SET isfinished = :concluido WHERE id = :tarefaId');
     $stmt->execute([
         'tarefaId' => $tarefaId,
         'concluido' => $concluido
