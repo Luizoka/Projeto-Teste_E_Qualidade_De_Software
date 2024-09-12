@@ -62,7 +62,7 @@ Este projeto foi desenvolvido como parte da disciplina de Teste e Qualidade de S
 
     ```php
     $host = 'localhost';
-    $dbname = 'nome_do_seu_banco';
+    $dbname = 'databasetodo';
     $username = 'root'; // Usuário padrão do XAMPP
     $password = ''; // Normalmente, sem senha no XAMPP por padrão
     ```
